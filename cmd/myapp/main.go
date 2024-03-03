@@ -2,6 +2,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"log"
 	"strings"
@@ -13,7 +14,14 @@ import (
 )
 
 func main() {
-	filePath := "test.xlsx"
+	var filePath string
+	flag.StringVar(&filePath, "file", "", "Path to the spreadsheet file")
+	flag.Parse() // Parse the flags
+
+	// Check if the filePath is provided
+	if filePath == "" {
+		log.Fatal("No file path provided. Use the --file flag to specify the spreadsheet file path.")
+	}
 	results, err := spreadsheet.ParseSpreadsheet(filePath)
 	if err != nil {
 		log.Fatalf("Failed to parse spreadsheet: %v", err)
