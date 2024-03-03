@@ -51,6 +51,10 @@ Navigate to the project directory and run:
 - Click on `Select file from your computer` and choose the generated `.ics` file.
 - Select the calendar where you want to import the events and click `Import`.
 
+6. **Example Images**
+![Example Spreadsheet](./example/example.png)
+![Example Calender](./example/example2.png)
+
 ## Customization
 
 - You can modify the `parser` and `ics` packages to adjust the event detail extraction logic and the `.ics` file formatting to suit your specific needs.
