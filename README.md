@@ -1,4 +1,4 @@
-# CapitolReef - Excel -> ICS
+# capitol-reef - Excel -> ICS
 
 The Vacation Planner Calendar Importer is a Go-based tool designed to streamline the process of creating detailed vacation itineraries in excel and importing them into Google Calendar. By parsing event details from a spreadsheet, formatting them for Google Calendar compatibility, and generating an iCalendar (.ics) file, this tool simplifies the task of planning and organizing vacation activities.
 
