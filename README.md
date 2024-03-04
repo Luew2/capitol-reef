@@ -40,7 +40,7 @@ Navigate to the project directory and run:
 3. **Run the Tool**:
 - Execute the main program, specifying the path to your spreadsheet:
   ```
-  go run cmd/main.go --file path/to/your/spreadsheet.xlsx
+  go run cmd/main.go --file path/to/your/spreadsheet.xlsx --timezone (timezone of activities, e.g Asia/Tokyo) See Appendix for a more comprehensive list.
   ```
 
 4. **Generate ICS File**:
@@ -72,3 +72,66 @@ Contributions to the Vacation Planner Calendar Importer are welcome. Please feel
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+
+## Apendix A
+```
+Africa
+
+Africa/Cairo
+Africa/Casablanca
+Africa/Johannesburg
+Africa/Lagos
+Africa/Nairobi
+
+Americas
+
+America/Argentina/Buenos_Aires
+America/Bogota
+America/Chicago
+America/Denver
+America/Los_Angeles
+America/Mexico_City
+America/New_York
+America/Sao_Paulo
+America/Toronto
+
+Asia
+
+Asia/Bangkok
+Asia/Beijing
+Asia/Dubai
+Asia/Hong_Kong
+Asia/Jakarta
+Asia/Kolkata
+Asia/Kuala_Lumpur
+Asia/Seoul
+Asia/Singapore
+Asia/Tokyo
+
+Australia
+
+Australia/Melbourne
+Australia/Sydney
+
+Europe
+
+Europe/Amsterdam
+Europe/Berlin
+Europe/Istanbul
+Europe/Lisbon
+Europe/London
+Europe/Moscow
+Europe/Paris
+Europe/Rome
+
+Pacific
+
+Pacific/Auckland
+Pacific/Honolulu
+
+Other Regions
+
+Atlantic/Reykjavik
+Indian/Mauritius
+```

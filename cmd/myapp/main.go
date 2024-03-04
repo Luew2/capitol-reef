@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"strings"
+	"time"
 
 	"github.com/Luew2/CapitolReef/pkg/ics"
 	"github.com/Luew2/CapitolReef/pkg/interpreter"
@@ -14,14 +15,24 @@ import (
 )
 
 func main() {
-	var filePath string
+	var (
+		filePath string
+		timezone string
+	)
 	flag.StringVar(&filePath, "file", "", "Path to the spreadsheet file")
+	flag.StringVar(&timezone, "timezone", "UTC", "Timezone for the events (e.g., 'America/New_York')")
 	flag.Parse() // Parse the flags
 
 	// Check if the filePath is provided
 	if filePath == "" {
 		log.Fatal("No file path provided. Use the --file flag to specify the spreadsheet file path.")
 	}
+
+	loc, err := time.LoadLocation(timezone)
+	if err != nil {
+		log.Fatalf("Invalid timezone provided: %v", err)
+	}
+
 	results, err := spreadsheet.ParseSpreadsheet(filePath)
 	if err != nil {
 		log.Fatalf("Failed to parse spreadsheet: %v", err)
@@ -47,7 +58,7 @@ func main() {
 	}
 
 	// Turn events into ical events
-	errs := ics.CreateICS(allEvents, "calendar.ics")
+	errs := ics.CreateICS(allEvents, "calendar.ics", loc, timezone)
 	if errs != nil {
 		log.Fatalf("Failed to create ICS file: %v", err)
 	}
