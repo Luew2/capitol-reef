@@ -10,14 +10,14 @@ import (
 	ics "github.com/arran4/golang-ical"
 )
 
-func CreateICS(events []parser.EventDetail, filename string, loc *time.Location, timezone string) error {
+func CreateICS(events []parser.EventDetail, filename string, timezone string) error {
 	cal := ics.NewCalendar()
 	cal.SetMethod(ics.MethodPublish)
 
 	for _, event := range events {
 		icalEvent := cal.AddEvent(event.Summary)
-		icalEvent.SetStartAt(parseTime(event.Start, loc))
-		icalEvent.SetEndAt(parseTime(event.End, loc))
+		icalEvent.SetStartAt(parseTime(event.Start))
+		icalEvent.SetEndAt(parseTime(event.End))
 		icalEvent.SetSummary(event.Summary)
 		icalEvent.SetDescription(event.Description)
 		icalEvent.SetLocation(event.Location)
@@ -53,14 +53,9 @@ func postProcessICalendarString(icsString string, timezone string) string {
 	return strings.Join(lines, "\n")
 }
 
-func parseTime(timeStr string, loc *time.Location) time.Time {
-	const layout = "20060102T150405"
+func parseTime(timeStr string) time.Time {
+	const layout = "20060102T150405Z"
 
-	parsedTime, _ := time.ParseInLocation(layout, timeStr, loc)
+	parsedTime, _ := time.Parse(layout, timeStr)
 	return parsedTime
 }
-
-// take in event details
-// put them all in one big ics file
-// write out ics file to . directory.
-// return complete string or a true bool or something

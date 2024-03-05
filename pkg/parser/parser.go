@@ -16,9 +16,9 @@ func ParseICalEvents(icalData string) ([]EventDetail, error) {
 		for _, line := range lines {
 			switch {
 			case strings.HasPrefix(line, "DTSTART"):
-				eventDetail.Start = strings.TrimPrefix(line, "DTSTART;TZID=Asia/Tokyo:")
+				eventDetail.Start = strings.TrimPrefix(line, "DTSTART:")
 			case strings.HasPrefix(line, "DTEND"):
-				eventDetail.End = strings.TrimPrefix(line, "DTEND;TZID=Asia/Tokyo:")
+				eventDetail.End = strings.TrimPrefix(line, "DTEND:")
 			case strings.HasPrefix(line, "SUMMARY"):
 				eventDetail.Summary = strings.TrimPrefix(line, "SUMMARY:")
 			case strings.HasPrefix(line, "DESCRIPTION"):

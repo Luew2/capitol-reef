@@ -28,7 +28,7 @@ func main() {
 		log.Fatal("No file path provided. Use the --file flag to specify the spreadsheet file path.")
 	}
 
-	loc, err := time.LoadLocation(timezone)
+	_, err := time.LoadLocation(timezone)
 	if err != nil {
 		log.Fatalf("Invalid timezone provided: %v", err)
 	}
@@ -58,7 +58,7 @@ func main() {
 	}
 
 	// Turn events into ical events
-	errs := ics.CreateICS(allEvents, "calendar.ics", loc, timezone)
+	errs := ics.CreateICS(allEvents, "calendar.ics", timezone)
 	if errs != nil {
 		log.Fatalf("Failed to create ICS file: %v", err)
 	}
